@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array/>
+	<key>name</key>
+	<string>Sage (interactive)</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>begin</key>
+			<string>^\s*(sage:|\.\.\.\.:|\.\.\.)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>interactive.prompt.sage</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.python</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>^\s*(Definition|Call def):</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>interactive.output.sage</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.python</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>interactive.output.error.sage</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^(([A-Za-z_][A-Za-z_0-9]+)?Error:).*</string>
+			<key>name</key>
+			<string>interactive.output.sage</string>
+		</dict>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>interactive.output.sage</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>interactive.output.error.sage</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>^(([A-Za-z_][A-Za-z_0-9]+)?Error)\s+Traceback \(most recent call last\)$</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>^.+$</string>
+			<key>name</key>
+			<string>interactive.output.sage</string>
+		</dict>
+	</array>
+	<key>scopeName</key>
+	<string>source.interactive.sage</string>
+	<key>uuid</key>
+	<string>5e817830-8cd5-4afd-8471-70623f637b0d</string>
+</dict>
+</plist>

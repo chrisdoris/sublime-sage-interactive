@@ -1,0 +1,41 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+# TODO: New scope for docstrings
+---
+name: Sage (interactive)
+scopeName: source.interactive.sage
+fileTypes: []
+uuid: 5e817830-8cd5-4afd-8471-70623f637b0d
+
+patterns:
+- begin: '^\s*(sage:|\.\.\.\.:|\.\.\.)'
+  end: '$'
+  patterns:
+  - include: source.python
+  beginCaptures:
+    '0':
+      name: interactive.prompt.sage
+
+- begin: '^\s*(Definition|Call def):'
+  end: '$'
+  patterns:
+  - include: source.python
+  beginCaptures:
+    '0':
+      name: interactive.output.sage
+
+- match: '^(([A-Za-z_][A-Za-z_0-9]+)?Error:).*'
+  name: interactive.output.sage
+  captures:
+    '1':
+      name: interactive.output.error.sage
+
+- match: '^(([A-Za-z_][A-Za-z_0-9]+)?Error)\s+Traceback \(most recent call last\)$'
+  captures:
+    '0':
+      name: interactive.output.sage
+    '1':
+      name: interactive.output.error.sage
+
+- match: '^.+$'
+  name: interactive.output.sage
+...
